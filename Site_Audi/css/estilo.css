@@ -18,16 +18,10 @@
 footer{
     text-align: center;
     background-color: #D6D5C9;
-
+    margin-top: 20px;
 }
 p{
     font-size: 1em;
-}
-h2{
-    text-align: center;
-    text-shadow: 5px 5px 5px #A22C29;
-    color: #0A100D ;
-    font-size: 2em;
 }
 h1{
     text-align: center;
@@ -85,14 +79,14 @@ header .container{
     font-size: 2em;
     font-weight: bold;
 }
-.banner2{
+.banner_contato{
     background: url(../img_geral/Banner2.jpg) no-repeat center/cover;
     width: 100%;
     max-width: 100%;
     height: 400px;
     display: flex;
     flex-direction: column;
-    align-items: right;
+    align-items: flex-start;
     justify-content: center;
     color: white;
     text-align: right;
@@ -101,9 +95,30 @@ header .container{
     padding: 0 10px;
     box-sizing: border-box;
 }
-.banner2 h2{
+.contatoh2{
     font-size: 2em;
-    margin-right: 10%;
+    margin-left: 5%;
+
+}
+.banner_envio{
+        background: url(../img_geral/Banner2.jpg) no-repeat center/cover;
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: white;
+    text-align: right;
+    text-shadow: 5px 5px 5px #A22C29 ;
+    margin-top: 130px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.envioh2{
+    font-size: 2em;
+    margin-left: 5%;
 }
 .banner{
     background: url(../img_geral/banner1.png) no-repeat center/cover;
@@ -194,13 +209,9 @@ section{
 .card{
     width: 70%;
 }
-.fonte{
-    font-size:1em;
-}
-
 #modelos .container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     text-align: center;
     padding: 50px 0;
@@ -243,7 +254,7 @@ section{
 
 }
 #contato{
-    background-color: whitesmoke;
+    background-color: #D6D5C9;
 }
 
 .formulario-contato {
@@ -257,33 +268,33 @@ section{
     color: black;
 }
   
-  .grupo-form {
+.grupo-form {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
     font-size: 1.2em;
-  }
+}
   
-  .grupo-form input,
-  .grupo-form select,
-  .grupo-form textarea {
+.grupo-form input,
+.grupo-form select,
+.grupo-form textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1em;
     margin-top: 8px;
-  }
+}
   
-  .grupo-form input[type="checkbox"],
-  .grupo-form input[type="radio"] {
+.grupo-form input[type="checkbox"],
+.grupo-form input[type="radio"] {
     margin-right: 8px;
     margin-top: 0;
-  }
+}
   
-  .grupo-form label {
+.grupo-form label {
     margin-bottom: 5px;
     font-weight: bold;
-  }
+}
 
 /*modal*/
 img.card{
@@ -291,7 +302,7 @@ img.card{
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px gray;
-    max-width: 400px;
+    max-width: 500px;
     margin: auto;
     text-align: center;
 }
@@ -363,27 +374,48 @@ img.card{
 
 .galeria {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
+    padding: 20px;
+    justify-items: center;
+}
   
-  .galeria img {
+.galeria img {
     width: 100%;
-    height: auto;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
-    border: 4px solid #111111;
-  }
+    border-radius: 10px;
+    border: 3px solid #111111;
+}
   
-  .galeria img:hover {
+.galeria img:hover {
     transform: scale(1.05);
-  }
+}
+.centraliza{
+    text-align: center;
+}
+body.paginamensagem {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}  
+body.paginamensagem main {
+    flex: 1;
+}
+.mensagem{
+    margin-top: 10%;
+    background-color: #B9BAA3;
+    font-size: xx-large;
+}
 
 @media (max-width:881px) {
+     .logo{
+    width: 45%;
+    }
     header .container, .sobre-container {
         flex-direction: column;
         text-align: center;
@@ -410,5 +442,3 @@ img.card{
     }
 
 }
-
-
