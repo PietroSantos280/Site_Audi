@@ -1,0 +1,414 @@
+/*Mossy moods
+1- 0A100D letras
+2- B9BAA3 background color
+3- D6D5C9 background color
+4- A22C29 box shadow
+5- 902923 box shadow
+*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jersey 25", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    font-style: normal;
+    scroll-behavior: smooth;
+}
+footer{
+    text-align: center;
+    background-color: #D6D5C9;
+
+}
+p{
+    font-size: 1em;
+}
+h2{
+    text-align: center;
+    text-shadow: 5px 5px 5px #A22C29;
+    color: #0A100D ;
+    font-size: 2em;
+}
+h1{
+    text-align: center;
+    text-shadow: 5px 5px 5px #A22C29;
+    color: #0A100D ;
+    font-size: 2em;
+}
+.container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+body{
+    background-color: #d6d5c9;
+}
+header{
+    background-color: #D6D5C9;
+    color: black;
+    padding: 15px 15px 15px 15px;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 1000;
+}
+nav ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+nav ul li{
+    margin-left: 25px;
+}
+nav ul li a {
+    color: #0A100D;
+    text-decoration: none;
+    font-size: 1.6em;
+}
+li a:hover{
+    background-color: #D6D5C9;
+}
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.logo a{
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #0A100D;
+}
+.logo{
+    font-size: 2em;
+    font-weight: bold;
+}
+.banner2{
+    background: url(../img_geral/Banner2.jpg) no-repeat center/cover;
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    justify-content: center;
+    color: white;
+    text-align: right;
+    text-shadow: 5px 5px 5px #A22C29 ;
+    margin-top: 130px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.banner2 h2{
+    font-size: 2em;
+    margin-right: 10%;
+}
+.banner{
+    background: url(../img_geral/banner1.png) no-repeat center/cover;
+    width: 100%;
+    max-width: 100%;
+    height: 470px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 30px;
+    color: black;
+    text-align: left;
+    font-size: 1.3em;
+    text-shadow: 5px 5px 5px #A22C29;
+    margin-top: 130px;
+
+}
+.banner h2 {
+    font-size: 30px;
+}
+.banner p{
+    font-size: 25px;
+}
+section{
+    scroll-margin-top: 125px;
+}
+#historia{
+    padding: 35px;
+    background-color: #D6D5C9;
+    color: black;
+}
+.sobre-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    max-width: 1400px;
+    margin: auto;
+}
+.sobre-texto{
+    flex: 1.5;
+    padding: 20px;
+}
+.sobre-texto h1{
+    font-size: 1.5;
+    margin-bottom: 20px;
+
+}
+.sobre-texto p{
+    font-size: 1;
+    line-height: 1.5;
+    text-align: justify;
+    margin-top: 10px;
+}
+.sobre-texto h2{
+    margin-top: 15px;
+}
+.sobre-texto a{
+    color: #0A100D;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+.fonte{
+    font-size: 0.8em;
+}
+.hex-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    flex: 1;
+}
+.hex{
+    width: 140px;
+    height: 120px;
+    clip-path: circle();
+    overflow: hidden;
+    background-color: #D6D5C9;
+    position: relative;
+}
+.hex img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card{
+    width: 70%;
+}
+.fonte{
+    font-size:1em;
+}
+
+#modelos .container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+    padding: 50px 0;
+}
+
+#modelos .item{
+    background-color: #D6D5C9;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px gray;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor:pointer;
+}
+#modelos .item h3{
+    font-size: 1.5em;
+}
+
+#modelos .item:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px gray;
+}
+
+#modelos .item:active{
+    transform: scale(0.98);
+    box-shadow: 0 4px 6px gray;
+}
+
+#modelos .item p{
+    margin-top: 15px;
+    font-size: 0.90em;
+    color:  black;
+}
+
+#modelos .imagem img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+
+}
+#contato{
+    background-color: whitesmoke;
+}
+
+.formulario-contato {
+    background-color: white;
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0 8px 15px black;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 40px;
+    color: black;
+}
+  
+  .grupo-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+  }
+  
+  .grupo-form input,
+  .grupo-form select,
+  .grupo-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    margin-top: 8px;
+  }
+  
+  .grupo-form input[type="checkbox"],
+  .grupo-form input[type="radio"] {
+    margin-right: 8px;
+    margin-top: 0;
+  }
+  
+  .grupo-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+/*modal*/
+img.card{
+    background: #B9BAA3;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px gray;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+.card h2{
+    font-size: 2em;
+    margin-top: 0;
+    text-align: center;    
+} 
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.modal:target{
+    display: flex;
+}
+.modal-content{
+    max-height: 60vh;
+    overflow-y: auto;
+    background: #D6D5C9;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    text-align: justify;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+
+}
+.modal-content h3{
+    font-size: 1.5em;
+}
+.modal-content p{
+    font-size: 1em;
+}
+
+.close-btn{
+    margin-top: 20px;
+    display: inline-block;
+    padding: 8px 16px;
+    background: red;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#tecnologia h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
+  .galeria img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    border: 4px solid #111111;
+  }
+  
+  .galeria img:hover {
+    transform: scale(1.05);
+  }
+
+@media (max-width:881px) {
+    header .container, .sobre-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        margin-top: 10px;
+        flex-direction: column;
+    }
+    .banner{
+        margin-top: 250px;
+    }
+    section{
+        scroll-margin-top: 200px;
+    }
+    .modal-content{
+        padding: 20px;
+        width: 95%;
+        max-height: 85vh;
+    }
+    .galeria {
+        flex-direction: column;
+        display: flex;
+    }
+
+}
+
+
