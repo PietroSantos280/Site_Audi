@@ -2,7 +2,7 @@
 repositorio para aula de iw com site da Audi
 
 # link go git
-https://github.com/PietroSantos280/Site_Audi.git
+https://pietrosantos280.github.io/Site_Audi/
 
 # link site da audi
-https://github.com/PietroSantos280/Site_Audi/Site_Audi/index.html
+https://pietrosantos280.github.io/Site_Audi/Site_Audi/index.html
