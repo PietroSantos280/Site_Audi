@@ -298,7 +298,6 @@ section{
 
 /*modal*/
 img.card{
-    background: #B9BAA3;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px gray;
@@ -365,7 +364,7 @@ img.card{
     cursor: pointer;
 }
 
-#tecnologia h1{
+#galeria h1{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -411,7 +410,45 @@ body.paginamensagem main {
     background-color: #B9BAA3;
     font-size: xx-large;
 }
-
+/*tabela*/
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+  
+.tabela-container table {
+    min-width: 600px;
+}
+.tabela-audi {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: red;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.tabela-audi th, 
+.tabela-audi td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+.tabela-audi thead {
+    background: linear-gradient(90deg, red, #A22C29);
+    color: #000;
+    font-weight: bold;
+}
+.tabela-audi tbody tr:hover {
+    background-color: black;
+    transition: background-color 0.3s ease;
+}
+  
+.tabela-audi tbody tr:last-child td {
+    border-bottom: none;
+}
 @media (max-width:881px) {
      .logo{
     width: 45%;
