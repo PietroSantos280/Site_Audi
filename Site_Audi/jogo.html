@@ -3,40 +3,619 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>formulario audi</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <title>Audi: Racing game</title>
     <link rel="shortcut icon" href="img_geral/favi_Audi.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
-<style>
-.container {
-  position: relative;
-}
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Jersey 25", sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            font-style: normal;
+            scroll-behavior: smooth;
+        }
+        footer{
+            text-align: center;
+            background-color: #D6D5C9;
+            margin-top: 20px;
+        }
+        p{
+            font-size: 1em;
+        }
+        h1{
+            text-align: center;
+            text-shadow: 5px 5px 5px #A22C29;
+            color: #0A100D ;
+            font-size: 2em;
+        }
+        .container{
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        body{
+            background-color: #d6d5c9;
+        }
+        header{
+            background-color: #D6D5C9;
+            color: black;
+            padding: 15px 15px 15px 15px;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 4px solid #000;
+        }
+        nav ul{
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        nav ul li{
+            margin-left: 25px;
+        }
+        nav ul li a {
+            color: #0A100D;
+            text-decoration: none;
+            font-size: 1.6em;
+        }
+        li a:hover{
+            background-color: #D6D5C9;
+        }
+        header .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo a{
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #0A100D;
+        }
+        .logo{
+            font-size: 2em;
+            font-weight: bold;
+        }
+        /* Game Container */
+        .game-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-.topleft {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-  font-size: 18px;
-}
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 800px;
+            margin-bottom: 15px;
+        }
 
-img { 
-  width: 100%;
-  height: auto;
-  opacity: 0.3;
-}
-</style>
+        .instructions {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .instructions h3 {
+            margin: 0 0 10px 0;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .instructions p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .level-info {
+            background-color: #000;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .game-area {
+            width: 90%;
+            max-width: 800px;
+            height: 400px;
+            background: linear-gradient(180deg, #ff4d4d 0%, #353434 100%); /* Gradiente céu/grama */
+            border: 5px solid black; /* Cinza Audi */
+            position: relative; /* Importante para posicionar elementos internos */
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Game Elements */
+        .player {
+            position: absolute; /* Posicionamento absoluto dentro do game-area */
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #c0c0c0,#D6D5C9);
+             /* Gradiente vermelho Audi */
+            border-radius: 8px;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .player::before {
+            content: "🏎️"; /* Emoji de carro */
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+
+        }
+
+        .obstacle {
+            position: absolute; /* Posicionamento absoluto dentro do game-area */
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #333, #666); /* Gradiente cinza escuro */
+            border-radius: 8px;
+            border: 2px solid #000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .obstacle::before {
+            content: "🚧"; /* Emoji de aviso */
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+        }
+
+        /* Mobile Controls */
+        .mobile-controls {
+            display: none; /* Oculto por padrão */
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        .mobile-btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            user-select: none;
+        }
+
+        .mobile-btn:hover, .mobile-btn:active {
+            background-color: #333;
+            transform: scale(1.1);
+        }
+
+        /* Controls */
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        .controls button {
+            background-color: #000; /* Preto Audi */
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            margin: 0 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls button:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        .controls button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Score Display */
+        .score-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            background-color: #fff;
+            padding: 15px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 3px solid #000;
+        }
+
+        /* Responsividade */
+        @media (max-width: 933px) {
+            .logo{
+                width: 45%;
+            }
+            header .container, .sobre-container {
+                flex-direction: column;
+               text-align: center;
+            }
+            nav ul {
+                margin-top: 10px;
+                flex-direction: column;
+            }
+
+            .game-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .instructions {
+                margin-right: 0;
+            }
+
+            .game-area {
+                height: 300px;
+            }
+
+            .mobile-controls {
+                display: flex; /* Mostra controles móveis em tablets */
+            }
+
+            .controls button {
+                margin: 5px;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-container {
+                padding: 10px;
+            }
+
+            .game-area {
+                width: 95%;
+                height: 250px;
+            }
+
+            .player, .obstacle {
+                width: 40px;
+                height: 40px;
+            }
+
+            .player::before {
+                font-size: 20px;
+            }
+
+            .obstacle::before {
+                font-size: 16px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .score-display {
+                font-size: 18px;
+                padding: 10px 20px;
+            }
+
+            .mobile-controls {
+                display: flex; /* Mostra controles móveis em celulares */
+            }
+
+            .mobile-btn {
+                padding: 12px 20px;
+                font-size: 20px;
+            }
+
+            .instructions h3 {
+                font-size: 16px;
+            }
+
+            .instructions p {
+                font-size: 12px;
+            }
+
+            .level-info {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .controls {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .controls button {
+                margin: 3px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><img src="img_geral/logo.png" alt="logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#historia">História</a></li>
+                    <li><a href="index.html#modelos">modelos</a></li>
+                    <li><a href="index.html#tabela">tabela</a></li>
+                    <li><a href="index.html#galeria">Galeria</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="jogo.html">jogo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<h2>Image Text</h2>
-<p>Add some text to an image in the top left corner:</p>
+    <div class="game-container">
+        <div class="game-info">
+            <div class="instructions">
+                <h3>Como Jogar:</h3>
+                <p>Use as setas ← → ou A/D para mover o carro</p>
+                <p>Evite os obstáculos e ganhe pontos!</p>
+                <p>Barra de espaço: Iniciar/Pausar</p>
+            </div>
+            <div class="level-info">
+                Nível: <span id="level">1</span>
+            </div>
+        </div>
+        
+        <div class="game-area">
+            <!-- Elementos do jogo serão adicionados aqui via JavaScript -->
+        </div>
+        
+        <div class="mobile-controls">
+            <button id="leftButton" class="mobile-btn">←</button>
+            <button id="rightButton" class="mobile-btn">→</button>
+        </div>
+        
+        <div class="controls">
+            <button id="startButton">Iniciar Jogo</button>
+            <button id="pauseButton">Pausar</button>
+            <button id="restartButton">Reiniciar</button>
+        </div>
+        
+        <div class="score-display">
+            Pontuação: <span id="score">0</span>
+        </div>
+    </div>
 
-<div class="container">
-  <img src="img_5terre_wide.jpg" alt="Cinque Terre" width="1000" height="300">
-  <div class="topleft">Top Left</div>
-</div>
+    <script>
+                // script.js
 
+        // Seleciona os elementos HTML do jogo
+        const gameArea = document.querySelector(".game-area"); // Área onde o jogo acontece (relative)
+        const startButton = document.getElementById("startButton"); // Botão para iniciar o jogo
+        const pauseButton = document.getElementById("pauseButton"); // Botão para pausar/despausar o jogo
+        const restartButton = document.getElementById("restartButton"); // Botão para reiniciar o jogo
+        const scoreDisplay = document.getElementById("score"); // Elemento para exibir a pontuação
+        const levelDisplay = document.getElementById("level"); // Elemento para exibir o nível
+        const leftButton = document.getElementById("leftButton"); // Botão móvel esquerda
+        const rightButton = document.getElementById("rightButton"); // Botão móvel direita
+
+        let player; // Variável para o elemento do jogador
+        let obstacles = []; // Array para armazenar os obstáculos
+        let score = 0; // Pontuação inicial
+        let gameInterval; // Variável para o intervalo principal do jogo
+        let obstacleInterval; // Variável para o intervalo de criação de obstáculos
+        let isPaused = false; // Flag para verificar se o jogo está pausado
+        let gameSpeed = 5; // Velocidade inicial do jogo (pixels por frame)
+        let level = 1; // Nível inicial do jogo
+
+        // Função para criar o jogador
+        function createPlayer() {
+            player = document.createElement("div"); // Cria um novo elemento div
+            player.classList.add("player"); // Adiciona a classe CSS 'player'
+            // Define a posição inicial do jogador (absolute dentro do gameArea)
+            player.style.left = gameArea.offsetWidth / 2 - 25 + "px"; // Centraliza horizontalmente
+            player.style.bottom = "10px"; // Posição vertical inicial
+            gameArea.appendChild(player); // Adiciona o jogador à área do jogo
+        }
+
+        // Função para criar um obstáculo
+        function createObstacle() {
+            const obstacle = document.createElement("div"); // Cria um novo elemento div
+            obstacle.classList.add("obstacle"); // Adiciona a classe CSS 'obstacle'
+            // Define uma posição horizontal aleatória para o obstáculo
+            obstacle.style.left = Math.random() * (gameArea.offsetWidth - 50) + "px";
+            obstacle.style.top = "-50px"; // Começa acima da área visível
+            gameArea.appendChild(obstacle); // Adiciona o obstáculo à área do jogo
+            obstacles.push(obstacle); // Adiciona o obstáculo ao array de obstáculos
+        }
+
+        // Função para mover os elementos do jogo (jogador e obstáculos)
+        function moveElements() {
+            if (isPaused) return; // Se o jogo estiver pausado, não move os elementos
+
+            // Move os obstáculos para baixo
+            obstacles.forEach((obstacle, index) => {
+                let currentTop = parseInt(obstacle.style.top); // Pega a posição vertical atual
+                obstacle.style.top = currentTop + gameSpeed + "px"; // Move para baixo
+
+                // Remove obstáculos que saíram da tela
+                if (currentTop > gameArea.offsetHeight) {
+                    obstacle.remove(); // Remove o elemento do DOM
+                    obstacles.splice(index, 1); // Remove do array
+                    score++; // Aumenta a pontuação
+                    scoreDisplay.textContent = score; // Atualiza a exibição da pontuação
+
+                    // Aumenta a velocidade e o nível a cada 10 pontos
+                    if (score % 10 === 0) {
+                        gameSpeed += 1; // Aumenta a velocidade
+                        level++; // Aumenta o nível
+                        levelDisplay.textContent = level; // Atualiza o display do nível
+                        console.log(`Nível: ${level}, Velocidade: ${gameSpeed}`);
+                    }
+                }
+
+                // Verifica colisão com o jogador
+                if (checkCollision(player, obstacle)) {
+                    endGame(); // Se houver colisão, termina o jogo
+                }
+            });
+        }
+
+        // Função para verificar colisão entre dois elementos
+        function checkCollision(element1, element2) {
+            const rect1 = element1.getBoundingClientRect(); // Pega as dimensões e posição do elemento 1
+            const rect2 = element2.getBoundingClientRect(); // Pega as dimensões e posição do elemento 2
+
+            // Verifica se os retângulos se sobrepõem
+            return !(
+                rect1.bottom < rect2.top ||
+                rect1.top > rect2.bottom ||
+                rect1.right < rect2.left ||
+                rect1.left > rect2.right
+            );
+        }
+
+        // Função para iniciar o jogo
+        function startGame() {
+            // Limpa a área do jogo e reinicia variáveis
+            gameArea.innerHTML = "";
+            obstacles = [];
+            score = 0;
+            scoreDisplay.textContent = score;
+            gameSpeed = 5;
+            level = 1;
+            levelDisplay.textContent = level; // Atualiza o display do nível
+            isPaused = false;
+
+            createPlayer(); // Cria o jogador
+
+            // Inicia o loop principal do jogo (movimento dos elementos)
+            gameInterval = setInterval(moveElements, 20); // Executa moveElements a cada 20ms
+            // Inicia a criação de obstáculos em intervalos regulares
+            obstacleInterval = setInterval(createObstacle, 1000); // Cria um obstáculo a cada 1000ms (1 segundo)
+
+            // Desabilita o botão de iniciar e habilita os outros
+            startButton.disabled = true;
+            pauseButton.disabled = false;
+            restartButton.disabled = false;
+        }
+
+        // Função para pausar/despausar o jogo
+        function togglePause() {
+            isPaused = !isPaused; // Inverte o estado de pausa
+            if (isPaused) {
+                pauseButton.textContent = "Despausar"; // Altera o texto do botão
+                clearInterval(gameInterval); // Para o loop principal do jogo
+                clearInterval(obstacleInterval); // Para a criação de obstáculos
+            } else {
+                pauseButton.textContent = "Pausar"; // Altera o texto do botão
+                // Reinicia os loops do jogo
+                gameInterval = setInterval(moveElements, 20);
+                obstacleInterval = setInterval(createObstacle, 1000);
+            }
+        }
+
+        // Função para terminar o jogo
+        function endGame() {
+            clearInterval(gameInterval); // Para o loop principal do jogo
+            clearInterval(obstacleInterval); // Para a criação de obstáculos
+            alert(`Fim de jogo! Sua pontuação: ${score}`); // Exibe a pontuação final
+            // Habilita o botão de iniciar e desabilita os outros
+            startButton.disabled = false;
+            pauseButton.disabled = true;
+            restartButton.disabled = false;
+        }
+
+        // Função para mover o jogador
+        function movePlayer(direction) {
+            if (!player || isPaused) return; // Se não há jogador ou o jogo está pausado, não move
+
+            const currentLeft = parseInt(player.style.left); // Pega a posição horizontal atual
+            const playerSpeed = 10; // Velocidade de movimento do jogador
+
+            if (direction === "left" && currentLeft > 0) {
+                // Move para a esquerda se não estiver na borda
+                player.style.left = currentLeft - playerSpeed + "px";
+            } else if (direction === "right" && currentLeft < gameArea.offsetWidth - 50) {
+                // Move para a direita se não estiver na borda
+                player.style.left = currentLeft + playerSpeed + "px";
+            }
+        }
+
+        // Event listener para controles de teclado
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "ArrowLeft" || event.key === "a" || event.key === "A") {
+                movePlayer("left"); // Move para a esquerda com seta esquerda ou tecla A
+            } else if (event.key === "ArrowRight" || event.key === "d" || event.key === "D") {
+                movePlayer("right"); // Move para a direita com seta direita ou tecla D
+            } else if (event.key === " " || event.key === "Spacebar") {
+                event.preventDefault(); // Previne o comportamento padrão da barra de espaço
+                if (!startButton.disabled) {
+                    startGame(); // Inicia o jogo se não estiver rodando
+                } else if (!pauseButton.disabled) {
+                    togglePause(); // Pausa/despausa o jogo se estiver rodando
+                }
+            }
+        });
+
+        // Adiciona os event listeners aos botões
+        startButton.addEventListener("click", startGame); // Ao clicar em iniciar, chama startGame
+        pauseButton.addEventListener("click", togglePause); // Ao clicar em pausar, chama togglePause
+        restartButton.addEventListener("click", startGame); // Ao clicar em reiniciar, chama startGame (reinicia o jogo)
+
+        // Event listeners para controles móveis
+        leftButton.addEventListener("touchstart", function(e) {
+            e.preventDefault(); // Previne comportamentos padrão do touch
+            movePlayer("left"); // Move para a esquerda
+        });
+
+        rightButton.addEventListener("touchstart", function(e) {
+            e.preventDefault(); // Previne comportamentos padrão do touch
+            movePlayer("right"); // Move para a direita
+        });
+
+        // Event listeners alternativos para clique (caso não seja touch)
+        leftButton.addEventListener("click", function() {
+            movePlayer("left"); // Move para a esquerda
+        });
+
+        rightButton.addEventListener("click", function() {
+            movePlayer("right"); // Move para a direita
+        });
+
+        // Inicializa o estado dos botões
+        pauseButton.disabled = true;
+        restartButton.disabled = true;
+    </script>
 </body>
 </html>
