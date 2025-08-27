@@ -87,7 +87,7 @@ header .container{
     color: white;
     text-align: right;
     text-shadow: 5px 5px 5px #A22C29 ;
-    margin-top: 1000px;
+    margin-top: 100px;
     padding: 0 10px;
     box-sizing: border-box;
 }
@@ -108,7 +108,7 @@ header .container{
     color: white;
     text-align: right;
     text-shadow: 5px 5px 5px #A22C29 ;
-    margin-top: 130px;
+    margin-top: 100px;
     padding: 0 10px;
     box-sizing: border-box;
 }
@@ -458,7 +458,13 @@ body.paginamensagem main {
         margin-top: 10px;
         flex-direction: column;
     }
-    .banner{
+    .banner {
+        margin-top: 250px;
+    }
+    .banner_contato{
+        margin-top: 250px;
+    }
+    .banner_envio{
         margin-top: 250px;
     }
     section{
