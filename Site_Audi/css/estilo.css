@@ -71,21 +71,15 @@ header .container{
     align-items: center;
     flex-wrap: wrap;
 }
-.logo a{
-    font-size: 1em;
-    font-weight: bold;
-    text-decoration: none;
-    color: #0A100D;
-}
-.logo{
-    font-size: 2em;
-    font-weight: bold;
+
+.logo img{
+    align-items: center;
 }
 .banner_contato{
     background: url(../img_geral/Banner2.jpg) no-repeat center/cover;
     width: 100%;
     max-width: 100%;
-    height: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -93,7 +87,7 @@ header .container{
     color: white;
     text-align: right;
     text-shadow: 5px 5px 5px #A22C29 ;
-    margin-top: 130px;
+    margin-top: 1000px;
     padding: 0 10px;
     box-sizing: border-box;
 }
@@ -103,7 +97,7 @@ header .container{
 
 }
 .banner_envio{
-        background: url(../img_geral/Banner2.jpg) no-repeat center/cover;
+    background: url(../img_geral/Banner2.jpg) no-repeat center/cover;
     width: 100%;
     max-width: 100%;
     height: 400px;
@@ -451,7 +445,7 @@ body.paginamensagem main {
 .tabela-audi tbody tr:last-child td {
     border-bottom: none;
 }
-@media (max-width:933px) {
+@media (max-width:935px) {
     .logo{
     width: 45%;
     }

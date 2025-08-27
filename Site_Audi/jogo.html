@@ -140,7 +140,7 @@
             width: 90%;
             max-width: 500px;
             height: 400px;
-            background: linear-gradient(180deg, #ff4d4d 0%, #353434 100%); /* Gradiente céu/grama */
+            background: url(img_jogo/Pista.jpg); /* Gradiente céu/grama */
             border: 5px solid black; /* Cinza Audi */
             position: relative; /* Importante para posicionar elementos internos */
             overflow: hidden;
@@ -152,17 +152,15 @@
         /* Game Elements */
         .player {
             position: absolute; /* Posicionamento absoluto dentro do game-area */
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, #c0c0c0,#D6D5C9);
-             /* Gradiente vermelho Audi */
+            width: 60px;
+            height: 60px;
+            background: url(img_jogo/visão_carro.png) no-repeat center/contain;
             border-radius: 8px;
-            border: 2px solid #fff;
+            border: 2px solid white;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .player::before {
-            content: "🏎️"; /* Emoji de carro */
             position: absolute;
             top: 30%;
             left: 50%;
@@ -175,14 +173,13 @@
             position: absolute; /* Posicionamento absoluto dentro do game-area */
             width: 50px;
             height: 50px;
-            background: linear-gradient(45deg, #333, #666); /* Gradiente cinza escuro */
+            background: url(img_jogo/obstaculo.png) no-repeat center/contain;
             border-radius: 8px;
-            border: 2px solid #000;
+            border: 2px solid #ff8c00;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .obstacle::before {
-            content: "🚧"; /* Emoji de aviso */
             position: absolute;
             top: 30%;
             left: 50%;
@@ -367,7 +364,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html"><img src="img_geral/logo.png" alt="logo"></a>
+                <a href="index.html"><img src="img_geral/logo_Audi.png" alt="logo"></a>
             </div>
             <nav>
                 <ul>
